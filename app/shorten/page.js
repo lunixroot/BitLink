@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-const shorten = () => {
+const Shorten = () => {
   const [url, seturl] = useState("");
   const [shorturl, setshorturl] = useState("");
   const [generated, setgenerated] = useState("");
@@ -26,7 +26,7 @@ const shorten = () => {
     fetch("/api/generate", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        setgenerated(`${process.env.NEXT_PUBLIC_HOST}/${shorturl}`);
+        setgenerated(`${window.location.origin}/${shorturl}`);
         seturl("");
         setshorturl("");
         console.log(result);
@@ -84,4 +84,4 @@ const shorten = () => {
   );
 };
 
-export default shorten;
+export default Shorten;
